@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kats Cuisine – Award-Winning Thai & Isan Takeaway in St Albans</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --orange: #E8651A;
+      --orange-light: #F5894A;
+      --cream: #FDF6EE;
+      --cream-dark: #F5E9D8;
+      --brown-dark: #1C1008;
+      --brown-mid: #5C3D1E;
+      --text: #2A1A0A;
+      --tri: #E8651A22;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      background: rgba(253,246,238,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e8d5bc;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: box-shadow .3s;
+    }
+    .navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,.08); }
+
+    .navbar-brand img {
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .nav-link {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--brown-mid) !important;
+      padding: 6px 12px !important;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--orange) !important; }
+
+    .btn-order {
+      background: var(--orange);
+      color: #fff !important;
+      border-radius: 100px;
+      padding: 8px 22px !important;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: background .25s, transform .2s;
+    }
+    .btn-order:hover { background: #c95315; transform: translateY(-1px); }
+
+    .navbar-toggler { border: none; }
+    .navbar-toggler:focus { box-shadow: none; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 92vh;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* geometric triangles */
+    .tri-tl {
+      position: absolute; top: -60px; left: -60px;
+      width: 300px; height: 300px;
+      background: var(--orange);
+      opacity: .12;
+      clip-path: polygon(0 0,100% 0,0 100%);
+    }
+    .tri-br {
+      position: absolute; bottom: -80px; right: -80px;
+      width: 380px; height: 380px;
+      background: var(--orange);
+      opacity: .10;
+      clip-path: polygon(100% 0,100% 100%,0 100%);
+    }
+    .tri-mid {
+      position: absolute; top: 50%; right: 28%;
+      width: 180px; height: 180px;
+      background: var(--orange);
+      opacity: .08;
+      clip-path: polygon(50% 0,100% 100%,0 100%);
+      transform: translateY(-50%);
+    }
+    .tri-sm {
+      position: absolute; bottom: 18%; left: 32%;
+      width: 90px; height: 90px;
+      background: var(--orange);
+      opacity: .13;
+      clip-path: polygon(50% 0,100% 100%,0 100%);
+    }
+
+    .hero-label {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--brown-dark);
+      margin-bottom: 18px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--brown-mid);
+      max-width: 440px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+    .btn-primary-orange {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 14px 34px;
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .25s, transform .2s, box-shadow .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary-orange:hover {
+      background: #c95315;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232,101,26,.35);
+    }
+
+    .btn-outline-orange {
+      background: transparent;
+      color: var(--orange);
+      border: 2px solid var(--orange);
+      border-radius: 100px;
+      padding: 12px 30px;
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .btn-outline-orange:hover {
+      background: var(--orange);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .hero-rating {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 28px;
+    }
+    .stars { color: var(--orange); font-size: 1rem; }
+    .rating-text { font-size: .85rem; color: var(--brown-mid); }
+
+    /* hero image */
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-main-img {
+      width: 100%;
+      max-width: 560px;
+      aspect-ratio: 4/3.2;
+      object-fit: cover;
+      border-radius: 30px 120px 30px 120px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.18);
+      animation: floatImg 5s ease-in-out infinite;
+    }
+    @keyframes floatImg {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: -16px; right: -10px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 50%;
+      width: 110px; height: 110px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(232,101,26,.4);
+      animation: spin-badge 20s linear infinite;
+    }
+    @keyframes spin-badge { to { transform: rotate(360deg); } }
+    .hero-badge span { animation: counter-spin 20s linear infinite; display: block; }
+    @keyframes counter-spin { to { transform: rotate(-360deg); } }
+
+    /* ─── AWARDS STRIP ─── */
+    .awards-strip {
+      background: var(--brown-dark);
+      padding: 28px 0;
+      overflow: hidden;
+    }
+    .awards-scroll {
+      display: flex;
+      gap: 60px;
+      animation: scroll-x 30s linear infinite;
+      width: max-content;
+    }
+    @keyframes scroll-x { to { transform: translateX(-50%); } }
+    .award-item {
+      display: flex; align-items: center; gap: 14px;
+      color: #fff; white-space: nowrap;
+    }
+    .award-item .fa { color: var(--orange); font-size: 1.3rem; }
+    .award-item strong { font-size: .9rem; font-weight: 600; letter-spacing: .06em; }
+    .award-divider { color: var(--orange); font-size: 1.2rem; opacity: .6; }
+
+    /* ─── CATEGORIES ─── */
+    .categories-section {
+      padding: 90px 0 70px;
+      background: var(--cream);
+    }
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      color: var(--brown-dark);
+      line-height: 1.2;
+      margin-bottom: 50px;
+    }
+    .section-title em { font-style: italic; color: var(--orange); }
+
+    .cat-card {
+      text-align: center;
+      cursor: pointer;
+    }
+    .cat-img-wrap {
+      width: 170px; height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 18px;
+      border: 4px solid transparent;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+      position: relative;
+    }
+    .cat-img-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0;
+      transition: opacity .3s;
+      z-index: 1;
+    }
+    .cat-card:hover .cat-img-wrap {
+      border-color: var(--orange);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(232,101,26,.25);
+    }
+    .cat-card:hover .cat-img-wrap::before { opacity: .15; }
+
+    .cat-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .4s;
+    }
+    .cat-card:hover .cat-img-wrap img { transform: scale(1.1); }
+
+    .cat-dot {
+      width: 28px; height: 28px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto -14px;
+      position: relative; z-index: 2;
+      box-shadow: 0 4px 12px rgba(232,101,26,.4);
+    }
+    .cat-dot .fa { color: #fff; font-size: .7rem; }
+
+    .cat-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-top: 10px;
+    }
+
+    /* ─── ABOUT / STORY ─── */
+    .about-section {
+      padding: 90px 0;
+      background: var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-section::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: var(--orange);
+      opacity: .06;
+      border-radius: 50%;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      border-radius: 30px 90px 30px 90px;
+      box-shadow: 0 30px 70px rgba(0,0,0,.16);
+      object-fit: cover;
+      max-height: 520px;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: 24px; left: -20px;
+      background: var(--brown-dark);
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 16px;
+      font-size: .85rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .about-img-badge strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--orange);
+    }
+
+    .about-text .section-title { margin-bottom: 20px; }
+    .about-text p {
+      color: var(--brown-mid);
+      line-height: 1.8;
+      font-size: .98rem;
+      margin-bottom: 18px;
+    }
+    .about-feature {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 16px;
+    }
+    .about-feature-icon {
+      width: 44px; height: 44px; min-width: 44px;
+      background: var(--orange);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: #fff;
+    }
+    .about-feature-text strong {
+      display: block;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 2px;
+    }
+    .about-feature-text span {
+      font-size: .85rem;
+      color: var(--brown-mid);
+    }
+
+    /* ─── AWARDS SECTION ─── */
+    .awards-section {
+      padding: 90px 0;
+      background: var(--cream);
+    }
+    .award-big-card {
+      background: var(--brown-dark);
+      border-radius: 24px;
+      padding: 40px 36px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .award-big-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.25);
+    }
+    .award-big-card::before {
+      content: '';
+      position: absolute; bottom: -40px; right: -40px;
+      width: 160px; height: 160px;
+      background: var(--orange);
+      border-radius: 50%;
+      opacity: .12;
+    }
+    .award-big-card .award-icon {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+    }
+    .award-big-card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .award-big-card p { font-size: .88rem; color: rgba(255,255,255,.75); line-height: 1.7; }
+    .award-big-card .award-year {
+      position: absolute; top: 24px; right: 24px;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+
+    .award-img-card {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 50px rgba(0,0,0,.12);
+      transition: transform .3s;
+      height: 100%;
+    }
+    .award-img-card:hover { transform: translateY(-6px); }
+    .award-img-card img { width: 100%; height: 100%; object-fit: cover; }
+
+    .finalist-badge {
+      background: linear-gradient(135deg, #f7c96e 0%, var(--orange) 100%);
+      color: var(--brown-dark);
+      border-radius: 24px;
+      padding: 36px 30px;
+      text-align: center;
+      height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      box-shadow: 0 16px 50px rgba(232,101,26,.25);
+      transition: transform .3s;
+    }
+    .finalist-badge:hover { transform: translateY(-6px); }
+    .finalist-badge .fa { font-size: 3rem; margin-bottom: 14px; }
+    .finalist-badge h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .finalist-badge p { font-size: .88rem; opacity: .85; line-height: 1.6; }
+
+    /* hygiene */
+    .hygiene-strip {
+      background: var(--orange);
+      padding: 24px 0;
+    }
+    .hygiene-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+      color: #fff;
+    }
+    .hygiene-inner img {
+      height: 72px; border-radius: 8px;
+      background: #fff; padding: 4px;
+    }
+    .hygiene-text { font-size: 1.1rem; font-weight: 600; }
+
+    /* ─── MENU HIGHLIGHT ─── */
+    .menu-section {
+      padding: 90px 0;
+      background: var(--cream-dark);
+    }
+    .dish-card {
+      background: var(--cream);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .dish-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.15);
+    }
+    .dish-img-wrap { position: relative; overflow: hidden; height: 230px; }
+    .dish-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .4s;
+    }
+    .dish-card:hover .dish-img-wrap img { transform: scale(1.08); }
+    .dish-tag {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+    .dish-body { padding: 24px; }
+    .dish-body h5 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 8px;
+    }
+    .dish-body p {
+      font-size: .85rem;
+      color: var(--brown-mid);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .dish-footer {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .dish-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .dish-order-btn {
+      background: var(--brown-dark);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .25s;
+      text-decoration: none;
+    }
+    .dish-order-btn:hover { background: var(--orange); color: #fff; }
+
+    /* ─── REVIEWS ─── */
+    .reviews-section {
+      padding: 90px 0;
+      background: var(--cream);
+    }
+    .review-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.07);
+      height: 100%;
+      position: relative;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.12);
+    }
+    .review-quote {
+      font-size: 4rem;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--orange);
+      line-height: .8;
+      margin-bottom: 12px;
+    }
+    .review-text {
+      font-size: .92rem;
+      color: var(--brown-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .review-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .review-author-name strong {
+      display: block;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+    .review-author-name span {
+      font-size: .78rem;
+      color: var(--brown-mid);
+    }
+    .review-stars { color: var(--orange); font-size: .85rem; margin-bottom: 4px; }
+
+    /* ─── DINING EXPERIENCE ─── */
+    .dining-section {
+      padding: 90px 0;
+      background: var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .dining-section::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 350px; height: 350px;
+      background: var(--orange);
+      border-radius: 50%;
+      opacity: .07;
+    }
+    .dining-img {
+      width: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+      height: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.15);
+    }
+    .dining-chip {
+      display: inline-flex;
+      align-items: center; gap: 8px;
+      background: #fff;
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      box-shadow: 0 4px 14px rgba(0,0,0,.09);
+      margin-bottom: 24px;
+    }
+    .dining-chip .dot {
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    /* ─── OPENING HOURS ─── */
+    .hours-section {
+      background: var(--brown-dark);
+      padding: 70px 0;
+    }
+    .hours-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .hours-card h3 {
+      color: #fff;
+      font-size: 1.8rem;
+      margin-bottom: 28px;
+    }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      color: rgba(255,255,255,.8);
+      font-size: .92rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { font-weight: 500; }
+    .hours-row .time { color: var(--orange); font-weight: 600; }
+    .hours-row .closed { color: rgba(255,255,255,.35); font-style: italic; }
+
+    .contact-info-card {
+      background: var(--orange);
+      border-radius: 20px;
+      padding: 36px 32px;
+      color: #fff;
+      height: 100%;
+    }
+    .contact-info-card h3 { font-size: 1.8rem; margin-bottom: 28px; color: #fff; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 22px;
+    }
+    .contact-item .fa {
+      font-size: 1rem; margin-top: 2px; opacity: .9;
+    }
+    .contact-item p {
+      font-size: .9rem; line-height: 1.6; opacity: .9; margin: 0;
+    }
+    .contact-item a { color: #fff; text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+    .map-btn {
+      background: rgba(255,255,255,.2);
+      border: 2px solid rgba(255,255,255,.5);
+      color: #fff;
+      border-radius: 100px;
+      padding: 12px 28px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px;
+      transition: background .25s;
+    }
+    .map-btn:hover { background: rgba(255,255,255,.35); color: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #100804;
+      padding: 60px 0 30px;
+      color: rgba(255,255,255,.65);
+    }
+    footer .logo-img { height: 52px; filter: brightness(10); margin-bottom: 16px; }
+    footer p { font-size: .85rem; line-height: 1.75; }
+    footer h6 {
+      color: #fff;
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    footer a {
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      font-size: .88rem;
+      display: block;
+      margin-bottom: 10px;
+      transition: color .2s;
+    }
+    footer a:hover { color: var(--orange); }
+    .social-links { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .social-link {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.6) !important;
+      font-size: .9rem;
+      margin-bottom: 0 !important;
+      transition: background .2s, color .2s;
+    }
+    .social-link:hover {
+      background: var(--orange);
+      color: #fff !important;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 24px;
+      margin-top: 48px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { margin: 0; font-size: .82rem; }
+
+    /* ─── SUBSCRIBE ─── */
+    .subscribe-section {
+      background: var(--cream);
+      padding: 60px 0;
+    }
+    .subscribe-inner {
+      background: var(--cream-dark);
+      border-radius: 24px;
+      padding: 52px 40px;
+      text-align: center;
+    }
+    .subscribe-inner h3 { font-size: 2.4rem; margin-bottom: 12px; }
+    .subscribe-inner p { color: var(--brown-mid); margin-bottom: 30px; }
+    .subscribe-form {
+      display: flex; gap: 12px;
+      max-width: 480px; margin: 0 auto;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .subscribe-form input {
+      flex: 1; min-width: 220px;
+      padding: 14px 22px;
+      border-radius: 100px;
+      border: 2px solid #e0cdb8;
+      background: #fff;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .subscribe-form input:focus { border-color: var(--orange); }
+    .subscribe-form button {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 14px 30px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .25s;
+    }
+    .subscribe-form button:hover { background: #c95315; }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 991px) {
+      .hero { min-height: auto; padding: 80px 0 60px; }
+      .hero-main-img { max-width: 100%; margin-top: 40px; }
+      .hero-badge { top: 10px; right: 10px; width: 88px; height: 88px; font-size: .85rem; }
+      .about-img-badge { left: 0; }
+    }
+    @media (max-width: 767px) {
+      .hero-title { font-size: 2.6rem; }
+      .cat-img-wrap { width: 130px; height: 130px; }
+      .award-big-card { margin-bottom: 20px; }
+      .dining-img { height: 280px; }
+      .subscribe-inner { padding: 36px 20px; }
+    }
+
+    /* ─── NAVBAR MOBILE ─── */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background: var(--cream);
+        border-radius: 16px;
+        padding: 16px;
+        margin-top: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://static.wixstatic.com/media/51e894_cb8d0bc50b0c4b07afe905726f634b2c~mv2.jpg/v1/crop/x_0,y_81,w_1979,h_1183/fill/w_403,h_241,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Kats_Cuisine_Final_With_lamdline_only.jpg" alt="Kats Cuisine Logo"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:07498226614" class="btn-order nav-link">Order Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="tri-tl"></div>
+  <div class="tri-br"></div>
+  <div class="tri-mid"></div>
+  <div class="tri-sm"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 fade-up">
+        <p class="hero-label">⭐ Premium Thai & Isan Takeaway</p>
+        <h1 class="hero-title">
+          Where every meal is<br>
+          a <em>chef masterpiece</em>
+        </h1>
+        <p class="hero-sub">
+          Authentic Thai & Isan flavours crafted from Kat's childhood farm in Maha Sarakham, Northeast Thailand — now served fresh to your door in St Albans.
+        </p>
+        <div class="hero-cta-group">
+          <a href="tel:07498226614" class="btn-primary-orange">
+            <i class="fa fa-phone"></i> Order Now
+          </a>
+          <a href="#menu" class="btn-outline-orange">View Menu</a>
+        </div>
+        <div class="hero-rating">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <span class="rating-text"><strong>4.9/5</strong> · Award-winning flavours · Free delivery over £20</span>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-image-wrap fade-up" style="transition-delay:.2s">
+          <img class="hero-main-img"
+               src="https://static.wixstatic.com/media/51e894_300c777a9e9f4a92a1e9d54540a27804~mv2.jpg/v1/fill/w_912,h_453,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Papya%20Backround%20resized_edited_edited_jp.jpg"
+               alt="Kats Cuisine – Fresh Thai Food"/>
+          <div class="hero-badge">
+            <span><i class="fas fa-award" style="font-size:1.5rem;margin-bottom:4px"></i><br>Award<br>Winning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWARDS SCROLL STRIP ═══ -->
+<div class="awards-strip">
+  <div class="awards-scroll">
+    <div class="award-item"><i class="fas fa-trophy fa"></i><strong>Best Thai Takeaway 2023</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-store fa"></i><strong>St Albans Food & Drink Retailer Finalist 2026</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-star fa"></i><strong>5-Star Food Hygiene Rating</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-leaf fa"></i><strong>Authentic Isan Recipes</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-truck fa"></i><strong>Free Delivery AL1–AL4 over £20</strong></div>
+    <span class="award-divider">✦</span>
+    <!-- duplicate for seamless loop -->
+    <div class="award-item"><i class="fas fa-trophy fa"></i><strong>Best Thai Takeaway 2023</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-store fa"></i><strong>St Albans Food & Drink Retailer Finalist 2026</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-star fa"></i><strong>5-Star Food Hygiene Rating</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-leaf fa"></i><strong>Authentic Isan Recipes</strong></div>
+    <span class="award-divider">✦</span>
+    <div class="award-item"><i class="fas fa-truck fa"></i><strong>Free Delivery AL1–AL4 over £20</strong></div>
+    <span class="award-divider">✦</span>
+  </div>
+</div>
+
+<!-- ═══ CATEGORIES ═══ -->
+<section class="categories-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center fade-up">
+        <p class="section-label">Explore Our Menu</p>
+        <h2 class="section-title">Taste the <em>heart of Thailand</em></h2>
+      </div>
+    </div>
+    <div class="row justify-content-center g-4">
+      <div class="col-6 col-md-3 fade-up" style="transition-delay:.05s">
+        <div class="cat-card">
+          <div class="cat-dot"><i class="fas fa-utensils"></i></div>
+          <div class="cat-img-wrap">
+            <img src="https://static.wixstatic.com/media/51e894_8ff9d23c78214dd48fb0073a17d35596~mv2.jpg/v1/fill/w_802,h_489,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AdobeStock_192600774_Preview%20pad%20thai%20re.jpg" alt="Main Course"/>
+          </div>
+          <div class="cat-label">Main Course</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up" style="transition-delay:.1s">
+        <div class="cat-card">
+          <div class="cat-dot"><i class="fas fa-pepper-hot"></i></div>
+          <div class="cat-img-wrap">
+            <img src="https://static.wixstatic.com/media/51e894_300c777a9e9f4a92a1e9d54540a27804~mv2.jpg/v1/fill/w_912,h_453,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Papya%20Backround%20resized_edited_edited_jp.jpg" alt="Starters"/>
+          </div>
+          <div class="cat-label">Starters</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up" style="transition-delay:.15s">
+        <div class="cat-card">
+          <div class="cat-dot"><i class="fas fa-seedling"></i></div>
+          <div class="cat-img-wrap">
+            <img src="https://static.wixstatic.com/media/51e894_573657e33aab495382bc29703c8cbe79~mv2.jpg/v1/fill/w_912,h_728,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Main%20Photo%20Resized.jpg" alt="Vegan"/>
+          </div>
+          <div class="cat-label">Vegan</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up" style="transition-delay:.2s">
+        <div class="cat-card">
+          <div class="cat-dot"><i class="fas fa-fire-alt"></i></div>
+          <div class="cat-img-wrap">
+            <img src="https://static.wixstatic.com/media/51e894_8ff9d23c78214dd48fb0073a17d35596~mv2.jpg/v1/fill/w_802,h_489,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AdobeStock_192600774_Preview%20pad%20thai%20re.jpg" alt="Specials"/>
+          </div>
+          <div class="cat-label">Chef's Specials</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 fade-up">
+        <div class="about-img-wrap">
+          <img class="about-img"
+               src="https://static.wixstatic.com/media/51e894_573657e33aab495382bc29703c8cbe79~mv2.jpg/v1/fill/w_912,h_728,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Main%20Photo%20Resized.jpg"
+               alt="Kat Harrington – Owner"/>
+          <div class="about-img-badge">
+            <strong>20+ Years</strong>
+            of authentic Thai cooking
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up about-text" style="transition-delay:.15s">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">
+          Farm-to-table flavours<br>from <em>Northeast Thailand</em>
+        </h2>
+        <p>
+          I grew up on my family's farm in Maha Sarakham, the heart of Northeast Thailand's Isan region. From a young age I prepared fresh Thai and Isan dishes every morning to sell at the local market before school — learning to balance chilli, lime, fish sauce and herbs perfectly using ingredients straight from the fields.
+        </p>
+        <p>
+          That same passion is what I now bring to St Albans. At Kats Cuisine (25 Drakes Drive, AL1 5AG) every Red Curry, Green Curry, Pad Thai, stir-fry and fried rice dish is made fresh to order with real Thai herbs and top-quality ingredients — exactly how I learned as a child.
+        </p>
+        <div class="row g-3 mt-2">
+          <div class="col-sm-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-fire-alt"></i></div>
+              <div class="about-feature-text">
+                <strong>Made Fresh to Order</strong>
+                <span>Every dish cooked with real Thai herbs</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-leaf"></i></div>
+              <div class="about-feature-text">
+                <strong>Vegan Options Available</strong>
+                <span>Dedicated full vegan menu</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-truck"></i></div>
+              <div class="about-feature-text">
+                <strong>Free Delivery</strong>
+                <span>AL1, AL2, AL3 & AL4 over £20</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-trophy"></i></div>
+              <div class="about-feature-text">
+                <strong>Award-Winning</strong>
+                <span>Best Thai Takeaway 2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWARDS ═══ -->
+<section class="awards-section" id="awards">
+  <div class="container">
+    <div class="row fade-up">
+      <div class="col-12 text-center">
+        <p class="section-label">Recognised Excellence</p>
+        <h2 class="section-title">Proud to be <em>award-winning</em></h2>
+      </div>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.05s">
+        <div class="award-big-card h-100">
+          <span class="award-year">2023</span>
+          <div class="award-icon">🏆</div>
+          <h4>Best Thai Takeaway</h4>
+          <p>Winner of the prestigious Best Thai Takeaway award, recognising our authentic Isan flavours and commitment to quality ingredients sourced straight from Thailand.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.1s">
+        <div class="finalist-badge h-100">
+          <i class="fas fa-medal"></i>
+          <h4>Food & Drink Retailer of the Year</h4>
+          <p>Finalist for St Albans Food & Drink Retailer of the Year 2026 — a testament to the love and loyalty of our incredible community. 🎉</p>
+          <a href="https://www.katscuisine.co.uk/nominate-kats-cuisine" target="_blank" style="margin-top:16px;background:rgba(0,0,0,.15);color:inherit;border-radius:100px;padding:10px 22px;text-decoration:none;font-size:.85rem;font-weight:600;display:inline-block;">Vote for Us →</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 fade-up" style="transition-delay:.15s">
+        <div class="row g-4 h-100">
+          <div class="col-12">
+            <div class="award-big-card" style="background:#1a3a1a">
+              <span class="award-year">Certified</span>
+              <div class="award-icon">⭐</div>
+              <h4 style="color:#5de05d">5-Star Hygiene Rating</h4>
+              <p>Awarded the top 5-star Food Hygiene Rating — our kitchen meets the highest standards of food safety and cleanliness.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="award-big-card" style="background:#1a1a3a;padding:20px 28px">
+              <span class="award-year">Always</span>
+              <div style="font-size:1.8rem;margin-bottom:8px">🌿</div>
+              <h4 style="color:#7eb8ff;font-size:1.2rem">Authentic Isan Heritage</h4>
+              <p style="font-size:.82rem">Traditional recipes passed down from generations in Maha Sarakham, Northeast Thailand.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Award images -->
+    <div class="row g-4 mt-3 justify-content-center">
+      <div class="col-auto fade-up">
+        <img src="https://static.wixstatic.com/media/51e894_d2adcd22073f446a84410e7fc2fe9e48~mv2.jpg/v1/fill/w_243,h_249,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2023%20Best%20Takeaway%20award.jpg"
+             alt="2023 Best Takeaway Award" style="height:140px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.12)"/>
+      </div>
+      <div class="col-auto fade-up" style="transition-delay:.1s">
+        <img src="https://static.wixstatic.com/media/51e894_0910334676994e71aabc667da9369283~mv2.jpg/v1/fill/w_250,h_249,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Retail%20Square.jpg"
+             alt="St Albans Retailer of the Year" style="height:140px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.12)"/>
+      </div>
+      <div class="col-auto fade-up" style="transition-delay:.15s">
+        <img src="https://static.wixstatic.com/media/51e894_a1ec065a114342b2bb460eaae55c38e5~mv2.jpg/v1/crop/x_3,y_3,w_759,h_372/fill/w_294,h_140,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Finalist%20for%20webite.jpg"
+             alt="Finalist 2026" style="height:140px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.12)"/>
+      </div>
+      <div class="col-auto fade-up" style="transition-delay:.2s">
+        <img src="https://static.wixstatic.com/media/51e894_4f61bde511b64477bb76e653c81eb624~mv2.jpg/v1/fill/w_282,h_139,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Higine%20master.jpg"
+             alt="5-Star Hygiene Rating" style="height:140px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.12)"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HYGIENE STRIP ═══ -->
+<div class="hygiene-strip">
+  <div class="container">
+    <div class="hygiene-inner">
+      <i class="fas fa-shield-alt" style="font-size:2rem;color:#fff"></i>
+      <span class="hygiene-text">5-Star Food Hygiene Rating · Safe, Clean & Certified Kitchen</span>
+      <img src="https://static.wixstatic.com/media/51e894_4f61bde511b64477bb76e653c81eb624~mv2.jpg/v1/fill/w_282,h_139,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Higine%20master.jpg"
+           alt="5 star hygiene"/>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MENU HIGHLIGHTS ═══ -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="row fade-up">
+      <div class="col-12 text-center">
+        <p class="section-label">Our Favourites</p>
+        <h2 class="section-title">Customer <em>loved dishes</em></h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.05s">
+        <div class="dish-card">
+          <div class="dish-img-wrap">
+            <img src="https://static.wixstatic.com/media/51e894_8ff9d23c78214dd48fb0073a17d35596~mv2.jpg/v1/fill/w_802,h_489,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AdobeStock_192600774_Preview%20pad%20thai%20re.jpg" alt="Pad Thai"/>
+            <span class="dish-tag">⭐ Bestseller</span>
+          </div>
+          <div class="dish-body">
+            <h5>Pad Thai</h5>
+            <p>Stir-fried rice noodles with egg, beansprouts, spring onions and your choice of chicken, prawn or tofu, finished with crushed peanuts and lime.</p>
+            <div class="dish-footer">
+              <span class="dish-price">From £9</span>
+              <a href="tel:07498226614" class="dish-order-btn">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.1s">
+        <div class="dish-card">
+          <div class="dish-img-wrap">
+            <img src="https://static.wixstatic.com/media/51e894_300c777a9e9f4a92a1e9d54540a27804~mv2.jpg/v1/fill/w_912,h_453,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Papya%20Backround%20resized_edited_edited_jp.jpg" alt="Green Curry"/>
+            <span class="dish-tag">🌿 Vegan Option</span>
+          </div>
+          <div class="dish-body">
+            <h5>Green Curry</h5>
+            <p>Aromatic coconut milk green curry with Thai aubergine, kaffir lime leaves, lemongrass and fresh basil — a classic bursting with fragrance.</p>
+            <div class="dish-footer">
+              <span class="dish-price">From £10</span>
+              <a href="tel:07498226614" class="dish-order-btn">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.15s">
+        <!-- <div class="dish-card">
+          <div class="dish-img-wrap">
+            <img src="https://static.wixstatic.com/media/51e894_573657e33aab495382bc29703c8cbe79~mv2.jpg/v1/fill/w_912,h_728,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Main%20Photo%20Resized.jpg" alt="Mixed Starter"/>
+            <span class="dish-tag">🔥 Fan Favourite</span>
+          </div>
+          <div class="dish-body">
+            <h5>Mixed Starter</h5>
+            <p>A selection of vegetable spring rolls, chicken satay, fish cakes, prawn on toast, Kats treasures and prawn crackers with homemade sauces.</p>
+            <div class="dish-footer">
+              <span class="dish-price">From £8.50</span>
+              <a href="tel:07498226614" class="dish-order-btn">Order</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5 fade-up">
+      <!-- <a href="https://www.katscuisine.co.uk/menu" target="_blank" class="btn-primary-orange">
+        <i class="fas fa-book-open"></i> Full Menu
+      </a>
+      <a href="https://www.katscuisine.co.uk/vegan" target="_blank" class="btn-outline-orange ms-3">
+        🌿 Vegan Menu
+      </a> -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DINING EXPERIENCE ═══ -->
+<section class="dining-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 fade-up">
+        <img class="dining-img"
+             src="https://static.wixstatic.com/media/51e894_573657e33aab495382bc29703c8cbe79~mv2.jpg/v1/fill/w_912,h_728,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Main%20Photo%20Resized.jpg"
+             alt="Best dining experience with every dish"/>
+      </div>
+      <div class="col-lg-6 fade-up" style="transition-delay:.15s">
+        <div class="dining-chip"><span class="dot"></span> Best Dining Experience</div>
+        <h2 class="section-title">
+          The <em>best dining experience</em><br>with every dish
+        </h2>
+        <p style="color:var(--brown-mid);line-height:1.8;font-size:.98rem;margin-bottom:28px">
+          We believe dining is more than just a meal — it's an experience. Our chefs create dishes that combine the freshest ingredients with centuries-old Isan techniques, bringing Thailand's vibrant food culture straight to your home in St Albans.
+        </p>
+        <div class="row g-3">
+          <div class="col-6">
+            <div style="background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+              <div style="font-size:2rem;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--orange)">100%</div>
+              <div style="font-size:.82rem;color:var(--brown-mid)">Fresh Ingredients</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+              <div style="font-size:2rem;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--orange)">5★</div>
+              <div style="font-size:.82rem;color:var(--brown-mid)">Hygiene Rating</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+              <div style="font-size:2rem;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--orange)">£20+</div>
+              <div style="font-size:.82rem;color:var(--brown-mid)">Free Delivery</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+              <div style="font-size:2rem;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--orange)">AL1-4</div>
+              <div style="font-size:.82rem;color:var(--brown-mid)">Delivery Areas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="row fade-up">
+      <div class="col-12 text-center">
+        <p class="section-label">What Our Customers Say</p>
+        <h2 class="section-title">Loved by the <em>St Albans community</em></h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.05s">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-quote">"</div>
+          <p class="review-text">Absolutely incredible food. The Pad Thai is the best I've ever had outside of Thailand. Kat puts so much love into every dish — you can truly taste the authenticity.</p>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <div class="review-author-name">
+              <strong>Sarah M.</strong>
+              <span>St Albans, AL1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.1s">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-quote">"</div>
+          <p class="review-text">We order from Kats every week! The green curry and mixed starter are our favourites. Free delivery is brilliant and food always arrives hot and fresh.</p>
+          <div class="review-author">
+            <div class="review-avatar">J</div>
+            <div class="review-author-name">
+              <strong>James T.</strong>
+              <span>St Albans, AL2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:.15s">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-quote">"</div>
+          <p class="review-text">As someone who has travelled to Thailand, Kats is genuinely the most authentic Thai food I've found in the UK. The flavours are just right — chilli, lime, herbs perfectly balanced.</p>
+          <div class="review-author">
+            <div class="review-avatar">P</div>
+            <div class="review-author-name">
+              <strong>Priya K.</strong>
+              <span>Harpenden, AL4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOURS & CONTACT ═══ -->
+<section class="hours-section" id="contact">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5 fade-up">
+        <div class="hours-card">
+          <h3><i class="fas fa-clock me-2" style="color:var(--orange)"></i>Opening Hours</h3>
+          <div class="hours-row"><span class="day">Wednesday</span><span class="time">5:00 PM – 10:00 PM</span></div>
+          <div class="hours-row"><span class="day">Thursday</span><span class="time">5:00 PM – 10:00 PM</span></div>
+          <div class="hours-row"><span class="day">Friday</span><span class="time">5:00 PM – 10:00 PM <small style="opacity:.6">(collection 5–8:30pm)</small></span></div>
+          <div class="hours-row"><span class="day">Saturday</span><span class="time">5:00 PM – 10:00 PM <small style="opacity:.6">(collection 5–8:30pm)</small></span></div>
+          <div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+          <div class="hours-row"><span class="day">Monday</span><span class="closed">Closed</span></div>
+          <div class="hours-row"><span class="day">Tuesday</span><span class="closed">Closed</span></div>
+          <p style="color:rgba(255,255,255,.45);font-size:.8rem;margin-top:20px">
+            <i class="fas fa-info-circle me-1" style="color:var(--orange)"></i>
+            Fridays & Saturdays: collection-only 5–8:30 pm. Delivery slots after 8:30 pm. Pre-booking recommended.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up" style="transition-delay:.1s">
+        <div class="contact-info-card">
+          <h3><i class="fas fa-map-marker-alt me-2"></i>Find Us</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-pin"></i>
+            <p>25 Drakes Drive, St Albans,<br>Hertfordshire, AL1 5AG</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p><a href="tel:01727860148">01727 860148</a><br><a href="tel:07498226614">07498 226614</a></p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p><a href="mailto:info@katscuisine.co.uk">info@katscuisine.co.uk</a></p>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <p><a href="https://wa.me/447498226614">WhatsApp us</a></p>
+          </div>
+          <a href="https://maps.app.goo.gl/3UL59UvnvCHky3d9A" target="_blank" class="map-btn">
+            <i class="fas fa-directions"></i> Get Directions
+          </a>
+          <a href="tel:07498226614" class="map-btn ms-2">
+            <i class="fas fa-phone"></i> Call to Order
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SUBSCRIBE ═══ -->
+<section class="subscribe-section">
+  <div class="container">
+    <div class="subscribe-inner fade-up">
+      <p class="section-label">Stay in the Loop</p>
+      <h3 class="section-title" style="font-size:2.4rem">Get new dish updates <em>& special offers</em></h3>
+      <p>Subscribe for exclusive offers, seasonal dishes and news straight from Kat's kitchen.</p>
+      <div class="subscribe-form">
+        <input type="email" placeholder="Your email address"/>
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <img class="logo-img"
+             src="https://static.wixstatic.com/media/51e894_cb8d0bc50b0c4b07afe905726f634b2c~mv2.jpg/v1/crop/x_0,y_81,w_1979,h_1183/fill/w_403,h_241,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Kats_Cuisine_Final_With_lamdline_only.jpg"
+             alt="Kats Cuisine"/>
+        <p style="margin-bottom:12px">Award-winning authentic Thai & Isan takeaway in St Albans. Made fresh to order with real herbs, real flavour, and real heart.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/Kats-Oriental-Cuisine-108676980932152" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/katsorientalcuisine/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/Kats_Cuisine" class="social-link" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/kat-harrington-4a32ba1b5/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/447498226614" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.threads.com/@katsorientalcuisine" class="social-link" target="_blank"><i class="fab fa-threads"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4">
+        <h6>Quick Links</h6>
+        <a href="#about">About Us</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#awards">Awards</a>
+        <a href="#reviews">Reviews</a>
+        <a href="https://www.katscuisine.co.uk/vegan" target="_blank">Vegan Menu</a>
+      </div>
+      <div class="col-lg-2 col-md-4">
+        <h6>Info</h6>
+        <a href="https://www.katscuisine.co.uk/blog" target="_blank">Blog</a>
+        <a href="https://www.katscuisine.co.uk/events" target="_blank">Events</a>
+        <a href="https://www.katscuisine.co.uk/vouchers" target="_blank">Gift Vouchers</a>
+        <a href="https://www.katscuisine.co.uk/nominate-kats-cuisine" target="_blank">Vote for Us</a>
+        <a href="https://www.katscuisine.co.uk/privacy-policy" target="_blank">Privacy Policy</a>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <h6>Awards & Recognition</h6>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <img src="https://static.wixstatic.com/media/51e894_d2adcd22073f446a84410e7fc2fe9e48~mv2.jpg/v1/fill/w_243,h_249,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2023%20Best%20Takeaway%20award.jpg"
+               alt="Best Takeaway 2023" style="height:70px;border-radius:10px"/>
+          <img src="https://static.wixstatic.com/media/51e894_0910334676994e71aabc667da9369283~mv2.jpg/v1/fill/w_250,h_249,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Retail%20Square.jpg"
+               alt="Retailer of the Year" style="height:70px;border-radius:10px"/>
+          <img src="https://static.wixstatic.com/media/51e894_4f61bde511b64477bb76e653c81eb624~mv2.jpg/v1/fill/w_282,h_139,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Higine%20master.jpg"
+               alt="5 Star Hygiene" style="height:70px;border-radius:10px"/>
+        </div>
+        <p style="font-size:.78rem;margin-top:14px">Free delivery to AL1, AL2, AL3 (St Albans) & AL4 postcodes on orders over £20.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Kats Cuisine. All rights reserved. 25 Drakes Drive, St Albans, AL1 5AG.</p>
+      <p><a href="https://www.katscuisine.co.uk/privacy-policy" target="_blank" style="display:inline;color:rgba(255,255,255,.4);font-size:.82rem">Privacy Policy</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Subscribe button
+  document.querySelector('.subscribe-form button').addEventListener('click', function() {
+    const input = document.querySelector('.subscribe-form input');
+    if (input.value.includes('@')) {
+      this.textContent = '✓ Subscribed!';
+      this.style.background = '#2a7a2a';
+      input.value = '';
+      setTimeout(() => { this.textContent = 'Subscribe'; this.style.background = ''; }, 3000);
+    } else {
+      input.focus();
+    }
+  });
+</script>
+</body>
+</html>
